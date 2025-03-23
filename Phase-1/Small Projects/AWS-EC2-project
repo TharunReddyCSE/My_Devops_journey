@@ -34,3 +34,17 @@ sudo yum update -y
 sudo amazon-linux-extras install nginx1 -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
+
+## Challenges & Solutions
+
+1. Issue: Wrong AMI Selected
+Problem: Initially chose the wrong AMI, causing amazon-linux-extras to fail with "command not found".
+Solution: Switched to Amazon Linux 2 AMI (e.g., ami-0c55b159cbfafe1f0 in us-east-1), updated the system, and ran the correct Nginx install command.
+Result: Nginx installed successfully.
+
+2. Issue: Nginx Page Not Loading
+Problem: Nginx page didn’t load at http://<public-ip> because port 443 was enabled instead of port 80.
+Solution: Removed port 443 and added port 80 in the security group.
+Result: Web server accessible after switching to Nginx.
+
+![](https://s3.eu-north-1.amazonaws.com/awsproject-dev.to.images/nginx-webpage.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIA4SZHOFKVAKOF6SLZ%2F20250323%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20250323T134019Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aCmV1LW5vcnRoLTEiRzBFAiAP%2BDUtM%2BE8CjmbnBnyJJWcRtS2nWxTlbXukwSXKHbwaAIhAPxpJ2vEBclNUgqT6eolvw0I44FnQvx7VxoyfEj3lM2EKvUCCNf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMODY0OTgxNzU2NTg2Igxd8XGxy%2FZQzJF3dIwqyQJmwoVq8JlxRYGY%2FmtJXdPhQ63kKHovhE4X%2FEVhG9BD2a44dxvK3pptDpdUoFSCpRi1TpF2zxvFGbWR6oUudAiq6rMxZ%2FWjYQ6waHe4U3TLuD9S9hY2Efmr2lqIZ9jXq0COt9JB9wNcKfzYUKSNqLK%2FcYS8EdujNzHeaGXDr6SHB3QT2h4zaAnWro1nJJ1WwgNNZ8TSesB9vlU6kX0wp%2BZ8tM1i7cVKt5ZamCJDRL2ZsjJsgY%2Bemh7lMPZ5SUJ2yAkOZ8k5oq3gUNlNNCWcqVY2FeoZ582vrcerJVQ6G6wrY3Li5dNUN7QMlA5knHv8ujSMB1ocHXLRMKeXS%2FMEltTSv7pxo5JH9ogtbcwU0ab%2FHZ7VSwkZ1k9gb708Db1A6dDqsQSrNiAfNtXQeGJN8fBdaCv0zoCW0JnetIV9BIEcVADZBNaeCjXXpDCiv%2F%2B%2BBjqzAk8DcdD0GDKCXmqOn0nNTjfbXAx3PSKnJ%2B4jedCrVpYDAgp75HBqm53JrrEu39PYrYREEeZRm9HUB%2BcAXh5iHsxkEgJl9IpgJD0KV7qMhNeqMHOZfCeRjs%2BORciVGdQPksCNnwv9N5vu6TU8QdLkOMtYx1kvphd3w2DNxvV92RrIqkR%2BdraABodVT8%2BVu1fNbDm1JvjPc2UOVyy4T8sPTyInsDOxBXpW0LQ%2By26e5Yf0x1ApuSXpVpejW8%2FUtge8jzqmy9nyzLGfmPiiEM1NZlQkOQzRJcFrvXGkUxSmROnyzCjmjtPGWUom8geZP00kay3vwbni6l3sLCK%2BZTHE7QjafY53lgfVVTWWOSL03u2lAA6uPzJ22OBpytKrapXvcofh1qdChFw%2FW5zm7Vi4wMc7%2FmU%3D&X-Amz-Signature=d018ebdcc36d62f0c142c3b76021cd26091c9abeabbcb04ac1d367a0b1148abb&X-Amz-SignedHeaders=host&response-content-disposition=inline)
