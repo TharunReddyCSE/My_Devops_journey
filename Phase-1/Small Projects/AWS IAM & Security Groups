@@ -1,0 +1,37 @@
+# AWS IAM & Security Groups
+
+## Objective
+Set up IAM users and roles, and configure security groups for an EC2 instance.
+
+## Tools Used
+- AWS IAM
+- AWS EC2
+
+## Steps
+1. Created an IAM user: `devops-user1` with `AmazonEC2ReadOnlyAccess`.
+2. Created an IAM role: `ec2-s3-role` with `AmazonS3ReadOnlyAccess`.
+3. Configured security group: SSH (port 22, my IP).
+4. Generated key pair: `my-new-key`.
+
+## Detailed Walkthrough
+### 1. IAM User Creation
+- Enabled console and programmatic access.
+- Attached `AmazonEC2ReadOnlyAccess` policy.
+
+### 2. IAM Role
+- Created for EC2 with `AmazonS3ReadOnlyAccess`.
+- Attached to the EC2 instance.
+
+### 3. Security Group
+- Inbound rules: SSH (port 22, my IP).
+
+### 4. Key Pair
+- Saved as `my-new-key.pem` with `chmod 400`.
+
+## Challenges & Solutions
+- **Issue:** SSH connection timed out initially.
+  - **Solution:** Fixed by ensuring correct security group rules and key pair.
+
+## Learnings
+- IAM users and roles enhance security by limiting access.
+- Security groups are critical for controlling instance traffic.
